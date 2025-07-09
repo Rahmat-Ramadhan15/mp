@@ -19,8 +19,7 @@ class KaryawanSeeder extends Seeder
                 'nama' => 'Andi',
                 'jabatan' => 'pegawai',
                 'phdp' => 5000000,
-                'tanggal_masuk' => '2000-01-01',
-                'tanggal_berhenti' => '2025-01-01',
+                'tanggal_masuk' => Carbon::create(2000, 1, 10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -28,11 +27,10 @@ class KaryawanSeeder extends Seeder
                 'nama' => 'Budi',
                 'jabatan' => 'direksi',
                 'phdp' => 10000000,
-                'tanggal_masuk' => '1995-06-01',
-                'tanggal_berhenti' => '2024-06-30',
+                'tanggal_masuk' => Carbon::create(1995, 6, 20),
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
     }
 }
