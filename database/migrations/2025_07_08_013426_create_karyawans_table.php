@@ -17,7 +17,6 @@ return new class extends Migration
         $table->string('jabatan');
         $table->integer('phdp');
         $table->date('tanggal_masuk');
-        $table->date('tanggal_berhenti')->nullable(); // bisa null jika belum berhenti
         $table->timestamps();
         });
     }

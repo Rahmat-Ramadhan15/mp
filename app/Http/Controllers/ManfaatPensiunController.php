@@ -19,14 +19,20 @@ class ManfaatPensiunController extends Controller
     {
         $karyawan = Karyawan::findOrFail($request->karyawan_id);
 
+        // Set tanggal berhenti ke hari ini (selalu diperbarui setiap hitung MP)
+        $karyawan->tanggal_berhenti = now();
+        $karyawan->save(); // Simpan perubahan ke database
+
+        // Hitung manfaat pensiun
         $hasil = (new ManfaatPensiunService())->hitung(
             $karyawan,
             $request->jenis,
             $request->metode,
-            (int) $request->kenaikan
+            $request->kenaikan
         );
 
-        $pdf = Pdf::loadView('mp.hasil', compact('karyawan', 'hasil'));
+        // Generate PDF hasil perhitungan
+        $pdf = PDF::loadView('mp.hasil', compact('karyawan', 'hasil'));
         return $pdf->stream('manfaat-pensiun.pdf');
     }
 }
